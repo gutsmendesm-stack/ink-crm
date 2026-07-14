@@ -3,11 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ClientsListScreen from '../screens/Clients/ClientsListScreen';
 import ClientDetailsScreen from '../screens/Clients/ClientDetailsScreen';
 import NewClientScreen from '../screens/Clients/NewClientScreen';
-import NewAppointmentScreen from '../screens/Appointments/NewAppointmentScreen';
-import AppointmentDetailsScreen from '../screens/Appointments/AppointmentDetailsScreen';
-import { ClientsStackParamList } from '../types';
 
-const Stack = createNativeStackNavigator<ClientsStackParamList>();
+const Stack = createNativeStackNavigator();
 
 export default function ClientsNavigator() {
   return (

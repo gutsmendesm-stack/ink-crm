@@ -5,9 +5,8 @@ import { useAuth } from '../hooks/useAuth';
 import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
 import { COLORS } from '../constants/theme';
-import { RootStackParamList } from '../types';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
   const { session, loading } = useAuth();

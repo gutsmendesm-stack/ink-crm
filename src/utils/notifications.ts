@@ -8,8 +8,6 @@ Notifications.setNotificationHandler({
     shouldShowAlert: true,
     shouldPlaySound: true,
     shouldSetBadge: true,
-    shouldShowBanner: true,
-    shouldShowList: true,
   }),
 });
 
@@ -17,7 +15,6 @@ export async function registerForPushNotificationsAsync(): Promise<string | null
   let token: string | null = null;
 
   if (!Device.isDevice) {
-    // Running on simulator - push notifications won't work but local ones will
     return null;
   }
 
@@ -45,7 +42,6 @@ export async function registerForPushNotificationsAsync(): Promise<string | null
     const tokenData = await Notifications.getExpoPushTokenAsync();
     token = tokenData.data;
   } catch (error) {
-    // Token retrieval failed (common on simulators)
     console.log('Push token not available:', error);
   }
 
@@ -59,10 +55,8 @@ export async function scheduleAppointmentReminder(
   date: Date,
   hoursBeforeDefault: number = 2
 ) {
-  // Schedule reminder X hours before the appointment
   const reminderDate = new Date(date.getTime() - hoursBeforeDefault * 60 * 60 * 1000);
 
-  // Don't schedule if it's in the past
   if (reminderDate <= new Date()) return null;
 
   const identifier = await Notifications.scheduleNotificationAsync({
@@ -72,10 +66,7 @@ export async function scheduleAppointmentReminder(
       data: { appointmentId },
       sound: true,
     },
-    trigger: {
-      type: Notifications.SchedulableTriggerInputTypes.DATE,
-      date: reminderDate,
-    },
+    trigger: reminderDate,
   });
 
   return identifier;
@@ -86,7 +77,6 @@ export async function scheduleDepositReminder(
   clientName: string,
   depositAmount: number
 ) {
-  // Schedule for 24 hours from now
   const reminderDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
   const identifier = await Notifications.scheduleNotificationAsync({
@@ -96,10 +86,7 @@ export async function scheduleDepositReminder(
       data: { appointmentId },
       sound: true,
     },
-    trigger: {
-      type: Notifications.SchedulableTriggerInputTypes.DATE,
-      date: reminderDate,
-    },
+    trigger: reminderDate,
   });
 
   return identifier;

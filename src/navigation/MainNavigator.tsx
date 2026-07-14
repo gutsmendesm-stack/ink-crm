@@ -5,9 +5,8 @@ import AgendaNavigator from './AgendaNavigator';
 import ClientsNavigator from './ClientsNavigator';
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import { COLORS } from '../constants/theme';
-import { MainTabParamList } from '../types';
 
-const Tab = createBottomTabNavigator<MainTabParamList>();
+const Tab = createBottomTabNavigator();
 
 export default function MainNavigator() {
   return (
@@ -35,7 +34,7 @@ export default function MainNavigator() {
         component={AgendaNavigator}
         options={{
           tabBarLabel: 'Agenda',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: () => (
             <Text style={{ fontSize: 22 }}>📅</Text>
           ),
         }}
@@ -45,7 +44,7 @@ export default function MainNavigator() {
         component={ClientsNavigator}
         options={{
           tabBarLabel: 'Clientes',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: () => (
             <Text style={{ fontSize: 22 }}>👥</Text>
           ),
         }}
@@ -55,7 +54,7 @@ export default function MainNavigator() {
         component={ProfileScreen}
         options={{
           tabBarLabel: 'Perfil',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: () => (
             <Text style={{ fontSize: 22 }}>⚙️</Text>
           ),
         }}

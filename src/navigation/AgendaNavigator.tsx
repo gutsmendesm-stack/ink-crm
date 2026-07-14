@@ -3,9 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AgendaScreen from '../screens/Agenda/AgendaScreen';
 import NewAppointmentScreen from '../screens/Appointments/NewAppointmentScreen';
 import AppointmentDetailsScreen from '../screens/Appointments/AppointmentDetailsScreen';
-import { AgendaStackParamList } from '../types';
 
-const Stack = createNativeStackNavigator<AgendaStackParamList>();
+const Stack = createNativeStackNavigator();
 
 export default function AgendaNavigator() {
   return (
